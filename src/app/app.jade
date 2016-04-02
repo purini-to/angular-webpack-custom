@@ -1,6 +1,19 @@
-main
-  h1.title Hello from Angular !
-  // Images (and assets) are parsed and loaded from within the public directory
-  img(src='/img/logo.png')
+header
+  md-sidenav(class="md-sidenav-left md-whiteframe-z2", md-component-id="nav")
+    md-toolbar
+      h2(class="md-toolbar-tools") Sidenav
+    md-content(layout-padding)
+      md-button(ng-click="app.closeSidenav()", hide-gt-md='') Close SideNav
+  md-toolbar
+    .md-toolbar-tools
+      md-button.md-icon-button(aria-label="Settings", ng-click='app.toggleSidenav()')
+        ng-md-icon(icon="menu")
+      h2
+        span Toolbar
+md-content(layout-padding)
+  .main
+    h1.title Hello from Angular !
+    // Images (and assets) are parsed and loaded from within the public directory
+    img(src='/img/logo.png')
 footer
   a(ng-href='{{app.url}}') Webpack Angular Starter
