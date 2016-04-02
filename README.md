@@ -6,7 +6,7 @@ Fork from [angular-webpack](https://github.com/preboot/angular-webpack)
 
 * No html. using [Jade](http://jade-lang.com/)
 * No css. using [Stylus](http://stylus-lang.com/)
-* Design framework is [Angular Material](https://material.angularjs.org/latest/) with [Angular Materila Icons](https://klarsys.github.io/angular-material-icons/)
+* Design framework is [Angular Material](https://material.angularjs.org/latest/) with [Angular Material Icons](https://klarsys.github.io/angular-material-icons/)
 
 # License
 
