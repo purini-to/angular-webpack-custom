@@ -116,7 +116,17 @@ module.exports = function makeWebpackConfig () {
       // Allow loading html through js
       test: /\.html$/,
       loader: 'raw'
-    }, { test: /\.jade$/, loader: "jade" }]
+    }, {
+      // JADE LOADER
+      // https://github.com/webpack/jade-loader
+      test: /\.jade$/,
+      loader: "jade"
+    }, {
+      // STYLUS LOADER
+      // https://github.com/shama/stylus-loader
+      test: /\.styl$/,
+      loader: 'style-loader!css-loader!stylus-loader'
+    }]
   };
 
   // ISPARTA LOADER
