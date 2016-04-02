@@ -116,7 +116,7 @@ module.exports = function makeWebpackConfig () {
       // Allow loading html through js
       test: /\.html$/,
       loader: 'raw'
-    }]
+    }, { test: /\.jade$/, loader: "jade" }]
   };
 
   // ISPARTA LOADER
@@ -152,13 +152,13 @@ module.exports = function makeWebpackConfig () {
    */
   config.plugins = [];
 
-  // Skip rendering index.html in test mode
+  // Skip rendering index.jade in test mode
   if (!isTest) {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
-    // Render index.html
+    // Render index.jade
     config.plugins.push(
       new HtmlWebpackPlugin({
-        template: './src/public/index.html',
+        template: './src/public/index.jade',
         inject: 'body'
       }),
 

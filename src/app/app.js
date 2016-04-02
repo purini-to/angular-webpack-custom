@@ -4,7 +4,7 @@ import '../style/app.css';
 
 let app = () => {
   return {
-    template: require('./app.html'),
+    template: require('./app.jade'),
     controller: 'AppCtrl',
     controllerAs: 'app'
   }
