@@ -19,7 +19,7 @@ module.exports = function karmaConfig (config) {
 
     files: [
       // Grab all files in the app folder that contain .spec.
-      'src/tests.webpack.js'
+      'client/tests.webpack.js'
     ],
 
     preprocessors: {
