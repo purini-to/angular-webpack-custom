@@ -1,10 +1,15 @@
 import angular from 'angular';
-import agMaterial from 'angular-material';
-import agAnimate from 'angular-animate';
-import agMdIcons from 'angular-material-icons';
+import ngMaterial from 'angular-material';
+import ngMessages from 'angular-messages';
+import ngAnimate from 'angular-animate';
+import ngMdIcons from 'angular-material-icons';
+
+import 'lodash/lodash'
+import 'restangular/dist/restangular'
 
 import 'angular-material/angular-material.css';
 import '../style/app.styl';
+
 
 let app = () => {
   return {
@@ -15,33 +20,50 @@ let app = () => {
 };
 
 class AppCtrl {
-  constructor($log, $mdSidenav) {
+  constructor($log, $mdSidenav, Notes) {
     this.url = 'https://github.com/preboot/angular-webpack';
     this.$log = $log;
     this.$mdSidenav = $mdSidenav;
+    this.Notes = Notes;
+    this.getNotes();
+  }
+
+  getNotes() {
+    this.Notes.getList().then(notes => {
+      this.notes = notes;
+    });
   }
 
   toggleSidenav() {
     this.$mdSidenav('nav').toggle()
-      .then(() => {
-        this.$log.debug('toggle nav is done');
-      });
+      .then(() => this.$log.debug('toggle nav is done'));
   }
 
   closeSidenav() {
     this.$mdSidenav('nav').close()
-      .then(() => {
-        this.$log.debug('close nav is done');
-      });
+      .then(() => this.$log.debug('close nav is done'));
+  }
+
+  addNote() {
+    this.Notes.post(this.newNote).then(() => this.getNotes());
+  }
+
+  deleteNote(note) {
+    note.remove().then(() => this.getNotes());
   }
 }
 
-AppCtrl.$inject = ['$log', '$mdSidenav'];
+AppCtrl.$inject = ['$log', '$mdSidenav', 'Notes'];
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [agMaterial, agAnimate, agMdIcons])
+angular.module(MODULE_NAME, [ngMaterial, ngMessages, ngAnimate, ngMdIcons, 'restangular'])
   .directive('app', app)
+  .factory('Notes', ["Restangular", Restangular => {
+    return Restangular.withConfig(config => {
+      config.setBaseUrl("/api");
+    }).service("notes");
+  }])
   .controller('AppCtrl', AppCtrl)
   .config(['$mdThemingProvider', function($mdThemingProvider) {
     $mdThemingProvider.theme('myAwesome')
