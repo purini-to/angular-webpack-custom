@@ -6,4 +6,8 @@ html(ng-app='app', lang='en')
     link(rel='icon', type='image/x-icon', href='/img/favicon.ico')
     base(href='/')
   body
-    app
+    div(layout="row", flex, layout-fill)
+      side-nav(layout)
+      div(layout="column", layout-fill)
+        top-bar(layout)
+        md-content(ui-view, flex, layout-padding)

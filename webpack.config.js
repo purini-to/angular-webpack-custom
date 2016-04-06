@@ -1,6 +1,7 @@
 'use strict';
 
 // Modules
+var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -54,6 +55,12 @@ module.exports = function makeWebpackConfig () {
     // Filename for non-entry points
     // Only adds hash in build mode
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+  };
+
+  config.resolve = {
+    root: [
+      path.resolve("./client/app")
+    ]
   };
 
   /**

@@ -1,0 +1,29 @@
+section
+  md-toolbar
+    h2.md-toolbar-tools Notes from LoopBack
+  md-content.md-inline-form(layout-padding)
+    form(name="myForm")
+      md-input-container.md-block
+        label Title
+        input(name="title", ng-model="note.newNote.title", required)
+        div(ng-messages="myForm.title.$error", role="alert", multiple)
+          div(ng-message="required") Title is required
+      md-input-container.md-block
+        label Content
+        textarea(name="content", ng-model="note.newNote.content", md-maxlength=150, rows="5", required)
+        div(ng-messages="myForm.content.$error", role="alert", multiple)
+          div(ng-message="required") Content is required
+          div(ng-message="md-maxlength") Content maxlength is 150
+      div(layout="row", layout-align="end")
+        md-button.md-raised.md-primary(ng-click="note.addNote()", ng-disabled="myForm.$invalid") Add
+  md-divider
+  md-content
+    md-list
+      md-subheader.md-no-sticky {{note.notes.length}} line item
+      md-divider
+      md-list-item.md-2-line(ng-repeat="n in note.notes")
+        .md-list-item-text
+          h3 {{ n.title }}
+          p {{ n.content }}
+        md-button.md-secondary.md-raised.md-warn(ng-click="note.deleteNote(n)") Delete
+        md-divider
