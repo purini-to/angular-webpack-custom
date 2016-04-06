@@ -6,6 +6,7 @@ Fork from [angular-webpack](https://github.com/preboot/angular-webpack)
 
 * No html. using [Jade](http://jade-lang.com/)
 * No css. using [Stylus](http://stylus-lang.com/)
+* No ngRoute. using [AngularUI Router](https://github.com/angular-ui/ui-router)
 * Design framework is [Angular Material](https://material.angularjs.org/latest/) with [Angular Material Icons](https://klarsys.github.io/angular-material-icons/)
 * Server side is [LoopBack](http://loopback.io/). No [AngularJS JavaScript SDK](https://docs.strongloop.com/display/public/LB/AngularJS+JavaScript+SDK). using [Restangular](https://github.com/mgonto/restangular)
 
