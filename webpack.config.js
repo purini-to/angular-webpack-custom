@@ -31,7 +31,8 @@ module.exports = function makeWebpackConfig () {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? {} : {
-    app: './client/app/app.js'
+    app: './client/app/confs/account/app.js',
+    task: './client/app/confs/task/task.js'
   };
 
   /**
@@ -176,7 +177,14 @@ module.exports = function makeWebpackConfig () {
     config.plugins.push(
       new HtmlWebpackPlugin({
         template: './client/public/index.jade',
-        inject: 'body'
+        inject: 'body',
+        chunks: ['app']
+      }),
+      new HtmlWebpackPlugin({
+        template: './client/public/task.jade',
+        inject: 'body',
+        filename: 'task.html',
+        chunks: ['task']
       }),
 
       // Reference: https://github.com/webpack/extract-text-webpack-plugin

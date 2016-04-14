@@ -1,0 +1,18 @@
+.account-login-ctrl.flex(layout="row", layout-align="center center", ng-cloak)
+  md-content.flex(layout="column", layout-padding, ng-class="{'gt-xs-width': vm.$mdMedia('gt-xs')}")
+    h2.flex.align-center.md-primary ログイン
+    .flex-xs(layout="column")
+      form(novalidate)
+        md-card.form-container
+          md-card-content(layout="column")
+            div(layout)
+              md-input-container.flex
+                label メールアドレス
+                input(ng-model="vm.account.email", type="email")
+            div(layout)
+              md-input-container.flex
+                label パスワード
+                input(ng-model="vm.account.password", type="password")
+          md-card-actions.flex(layout="row")
+            md-button.flex.md-primary.md-raised.md-hue-2(ng-click="vm.login()", type="submit") ログイン
+      md-button.flex.md-primary(ui-sref="accountNew") アカウントを作成
